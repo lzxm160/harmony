@@ -19,7 +19,7 @@ var (
 		Port:            "9999",
 		ConsensusPubKey: pubKey1,
 	}
-	e1 = `ssW`
+	e1 = ``
 	e3 = "sssss"
 
 	pubKey2 = pki.GetBLSPrivateKeyFromInt(999).GetPublicKey()
@@ -47,7 +47,7 @@ var (
 )
 
 func TestString(test *testing.T) {
-	ping1 := NewPingMessage(p1, false)
+	ping1 := NewPingMessage(p1, true)
 
 	if strings.Compare(ping1.String(), e1) != 0 {
 		test.Errorf("expect: %v, got: %v", e1, ping1.String())
