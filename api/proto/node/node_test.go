@@ -26,14 +26,14 @@ func TestSerializeBlockchainSyncMessage(t *testing.T) {
 	h1 := common.HexToHash("123")
 	h2 := common.HexToHash("abc")
 
-	hash := []common.Hash{
-		h1,
-		h2,
+	hash := [][]byte{
+		h1.Bytes(),
+		h2.Bytes(),
 	}
 
 	msg := BlockchainSyncMessage{
 		BlockHeight: 2,
-		BlockHashes: []hash.Bytes(),
+		BlockHashes: hash,
 	}
 
 	serializedByte := SerializeBlockchainSyncMessage(&msg)
