@@ -41,6 +41,8 @@ func TestSerializeBlockchainSyncMessage(t *testing.T) {
 
 	dMsg, err := DeserializeBlockchainSyncMessage(serializedByte)
 
+	fmt.Println(msg)
+	fmt.Println(dMsg)
 	if err != nil || !reflect.DeepEqual(msg, *dMsg) {
 		t.Errorf("Failed to serialize/deserialize blockchain sync message\n")
 	}
