@@ -130,7 +130,7 @@ func TestInfoToString(t *testing.T) {
 		Port:   "81",
 		PeerID: "peer",
 	}
-	if strings.Compare(info.String(), `"IP:"127.0.0.1" Port:"81" PeerID:"peer"`) != 0 {
+	if strings.Compare(info.String(), `IP:"127.0.0.1" Port:"81" PeerID:"peer"`) != 0 {
 		t.Errorf("Info string mismatch: %v", info.String())
 	}
 }
