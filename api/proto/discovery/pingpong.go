@@ -27,7 +27,7 @@ func NewPingMessage(peer p2p.Peer, isClient bool) *node.PingMessageType {
 	ping.Version = proto.ProtocolVersion
 	ping.Node.IP = peer.IP
 	ping.Node.Port = peer.Port
-	ping.Node.PeerID = peer.PeerID
+	ping.Node.PeerID = peer.PeerID[:]
 	if !isClient {
 		ping.Node.PubKey = peer.ConsensusPubKey.Serialize()
 		ping.Node.Role = uint32(node.ValidatorRole)
