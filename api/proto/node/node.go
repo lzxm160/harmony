@@ -86,7 +86,7 @@ const (
 func (p PingMessageType) ConstructPingMessage() []byte {
 	siz := p.XXX_Size()
 	b := make([]byte, 0, siz)
-	ret, err := p.XXX_Marshal(b, false)
+	ret, err := p.XXX_Marshal(b, true)
 	if err != nil {
 		return nil
 	}
@@ -97,7 +97,7 @@ func (p PingMessageType) ConstructPingMessage() []byte {
 func (p PongMessageType) ConstructPongMessage() []byte {
 	siz := p.XXX_Size()
 	b := make([]byte, 0, siz)
-	ret, err := p.XXX_Marshal(b, false)
+	ret, err := p.XXX_Marshal(b, true)
 	if err != nil {
 		return nil
 	}
@@ -108,7 +108,7 @@ func (p PongMessageType) ConstructPongMessage() []byte {
 func SerializeBlockchainSyncMessage(blockchainSyncMessage *BlockchainSyncMessage) []byte {
 	siz := blockchainSyncMessage.XXX_Size()
 	b := make([]byte, 0, siz)
-	ret, err := blockchainSyncMessage.XXX_Marshal(b, false)
+	ret, err := blockchainSyncMessage.XXX_Marshal(b, true)
 	if err != nil {
 		return nil
 	}
