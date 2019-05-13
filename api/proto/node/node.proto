@@ -6,7 +6,7 @@ message Info{
   string Port=2;
   bytes PubKey=3;
   uint32 Role=4;
-  bytes	PeerID=5;
+  string PeerID=5;
 }
 message BlockchainSyncMessage {
   int64 BlockHeight=1;
