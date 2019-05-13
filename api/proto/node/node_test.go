@@ -133,6 +133,6 @@ func TestInfoToString(t *testing.T) {
 	expected := `IP:"127.0.0.1" Port:"81" PeerID:"peer"`
 	fmt.Println(expected)
 	if strings.Compare(info.String(), expected) != 0 {
-		t.Errorf("Info string mismatch: %v", info.String())
+		t.Errorf("Info string mismatch: %s", info.String())
 	}
 }
