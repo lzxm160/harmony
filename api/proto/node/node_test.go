@@ -1,7 +1,10 @@
 package node
 
 import (
+	"math/big"
+	"reflect"
 	"strings"
+	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
@@ -9,10 +12,6 @@ import (
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/harmony-one/harmony/core/state"
 	"github.com/harmony-one/harmony/core/types"
-
-	"math/big"
-	"reflect"
-	"testing"
 )
 
 var (
@@ -27,12 +26,14 @@ func TestSerializeBlockchainSyncMessage(t *testing.T) {
 	h1 := common.HexToHash("123")
 	h2 := common.HexToHash("abc")
 
+	hash := []common.Hash{
+		h1,
+		h2,
+	}
+
 	msg := BlockchainSyncMessage{
 		BlockHeight: 2,
-		BlockHashes: []common.Hash{
-			h1,
-			h2,
-		},
+		BlockHashes: hash.Bytes(),
 	}
 
 	serializedByte := SerializeBlockchainSyncMessage(&msg)
@@ -127,7 +128,7 @@ func TestInfoToString(t *testing.T) {
 	info := Info{
 		IP:     "127.0.0.1",
 		Port:   "81",
-		PeerID: "peer",
+		PeerID: []byte("peer"),
 	}
 	if strings.Compare(info.String(), "Info:127.0.0.1/81=>3sdfvR") != 0 {
 		t.Errorf("Info string mismatch: %v", info.String())
