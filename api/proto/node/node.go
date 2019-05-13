@@ -90,7 +90,7 @@ func (p PingMessageType) ConstructPingMessage() []byte {
 	if err != nil {
 		return nil
 	}
-	return ret.Bytes()
+	return ret
 }
 
 // ConstructPongMessage contructs pong message from leader to node
@@ -101,7 +101,7 @@ func (p PongMessageType) ConstructPongMessage() []byte {
 	if err != nil {
 		return nil
 	}
-	return ret.Bytes()
+	return ret
 }
 
 // SerializeBlockchainSyncMessage serializes BlockchainSyncMessage.
