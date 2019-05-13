@@ -34,6 +34,7 @@ import (
 	"github.com/harmony-one/harmony/internal/utils"
 	"github.com/harmony-one/harmony/p2p"
 	"github.com/harmony-one/harmony/p2p/host"
+	libp2p_peer "github.com/libp2p/go-libp2p-peer"
 )
 
 const (
@@ -392,7 +393,7 @@ func (node *Node) pingMessageHandler(msgPayload []byte, sender string) int {
 	peer := new(p2p.Peer)
 	peer.IP = ping.Node.IP
 	peer.Port = ping.Node.Port
-	id, err := peer.IDFromString(ping.Node.PeerID)
+	id, err := libp2p_peer.IDFromString(ping.Node.PeerID)
 	if err != nil {
 		return -1
 	}
@@ -533,7 +534,7 @@ func (node *Node) pongMessageHandler(msgPayload []byte) int {
 		peer := new(p2p.Peer)
 		peer.IP = p.IP
 		peer.Port = p.Port
-		id, err := peer.IDFromString(ping.Node.PeerID)
+		id, err := libp2p_peer.IDFromString(p.PeerID)
 		if err != nil {
 			continue
 		}
