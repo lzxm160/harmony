@@ -13,3 +13,14 @@ message BlockchainSyncMessage {
   bytes BlockHashes=2;
 }
 
+message PingMessageType{
+ uint32 Version=1;
+ Info Node=2;
+}
+message PongMessageType {
+    uint32 ShardID=1;
+    uint32 Version=2;
+    repeated Info Peers=3;
+    repeated bytes PubKeys=4;
+    bytes LeaderPubKey=5;
+}

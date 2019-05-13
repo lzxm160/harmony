@@ -22,29 +22,30 @@ import (
 	"github.com/harmony-one/harmony/p2p"
 )
 
-// PingMessageType defines the data structure of the Ping message
-type PingMessageType struct {
-	Version uint16 // version of the protocol
-	Node    node.Info
-}
-
-// PongMessageType defines the data structure of the Pong message
-type PongMessageType struct {
-	ShardID      uint32
-	Version      uint16 // version of the protocol
-	Peers        []node.Info
-	PubKeys      [][]byte // list of publickKeys, has to be identical among all validators/leaders
-	LeaderPubKey []byte   // public key of shard leader
-}
-
-func (p PingMessageType) String() string {
-	return fmt.Sprintf("ping:%v/%v=>%v:%v/%v", p.Node.Role, p.Version, p.Node.IP, p.Node.Port, p.Node.PubKey)
-}
-
-func (p PongMessageType) String() string {
-	str := fmt.Sprintf("pong:%v=>length:%v, keys:%v, leader:%v\n", p.Version, len(p.Peers), len(p.PubKeys), len(p.LeaderPubKey))
-	return str
-}
+//
+//// PingMessageType defines the data structure of the Ping message
+//type PingMessageType struct {
+//	Version uint16 // version of the protocol
+//	Node    node.Info
+//}
+//
+//// PongMessageType defines the data structure of the Pong message
+//type PongMessageType struct {
+//	ShardID      uint32
+//	Version      uint16 // version of the protocol
+//	Peers        []node.Info
+//	PubKeys      [][]byte // list of publickKeys, has to be identical among all validators/leaders
+//	LeaderPubKey []byte   // public key of shard leader
+//}
+//
+//func (p PingMessageType) String() string {
+//	return fmt.Sprintf("ping:%v/%v=>%v:%v/%v", p.Node.Role, p.Version, p.Node.IP, p.Node.Port, p.Node.PubKey)
+//}
+//
+//func (p PongMessageType) String() string {
+//	str := fmt.Sprintf("pong:%v=>length:%v, keys:%v, leader:%v\n", p.Version, len(p.Peers), len(p.PubKeys), len(p.LeaderPubKey))
+//	return str
+//}
 
 // NewPingMessage creates a new Ping message based on the p2p.Peer input
 func NewPingMessage(peer p2p.Peer, isClient bool) *PingMessageType {
