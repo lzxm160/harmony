@@ -1,7 +1,6 @@
 package node
 
 import (
-	"fmt"
 	"math/big"
 	"strings"
 	"testing"
@@ -131,8 +130,6 @@ func TestInfoToString(t *testing.T) {
 	}
 	var expected string
 	expected = `IP:"127.0.0.1" Port:"81" PeerID:"peer"`
-	fmt.Println(info.String())
-	fmt.Println(expected)
 	if strings.EqualFold(info.String(), expected) {
 		t.Errorf("Info string mismatch: %s", info.String())
 	}
