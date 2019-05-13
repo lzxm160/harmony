@@ -10,7 +10,7 @@ message Info{
 }
 message BlockchainSyncMessage {
   int64 BlockHeight=1;
-  bytes BlockHashes=2;
+  repeated bytes BlockHashes=2;
 }
 
 message PingMessageType{

@@ -33,7 +33,7 @@ func TestSerializeBlockchainSyncMessage(t *testing.T) {
 
 	msg := BlockchainSyncMessage{
 		BlockHeight: 2,
-		BlockHashes: hash.Bytes(),
+		BlockHashes: []hash.Bytes(),
 	}
 
 	serializedByte := SerializeBlockchainSyncMessage(&msg)
