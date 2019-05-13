@@ -82,6 +82,28 @@ const (
 	STOP ControlMessageType = iota
 )
 
+// ConstructPingMessage contructs ping message from node to leader
+func (p PingMessageType) ConstructPingMessage() []byte {
+	siz := p.XXX_Size()
+	b := make([]byte, 0, siz)
+	ret, err := p.XXX_Marshal(b, false)
+	if err != nil {
+		return nil
+	}
+	return ret.Bytes()
+}
+
+// ConstructPongMessage contructs pong message from leader to node
+func (p PongMessageType) ConstructPongMessage() []byte {
+	siz := p.XXX_Size()
+	b := make([]byte, 0, siz)
+	ret, err := p.XXX_Marshal(b, false)
+	if err != nil {
+		return nil
+	}
+	return ret.Bytes()
+}
+
 // SerializeBlockchainSyncMessage serializes BlockchainSyncMessage.
 func SerializeBlockchainSyncMessage(blockchainSyncMessage *BlockchainSyncMessage) []byte {
 	siz := blockchainSyncMessage.XXX_Size()
