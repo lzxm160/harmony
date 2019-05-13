@@ -1,0 +1,15 @@
+syntax = "proto3";
+package node;
+
+message Info{
+  string IP=1;
+  string Port=2;
+  bytes PubKey=3;
+  uint32 Role=4;
+  bytes	=5; // Peerstore ID
+}
+message BlockchainSyncMessage {
+  int64 BlockHeight=1;
+  bytes BlockHashes=2;
+}
+
