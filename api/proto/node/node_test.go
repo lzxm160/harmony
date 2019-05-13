@@ -127,12 +127,10 @@ func TestInfoToString(t *testing.T) {
 	info := Info{
 		IP:     "127.0.0.1",
 		Port:   "81",
-		PubKey: []byte("x"),
-		Role:   1,
 		PeerID: "peer",
 	}
 	var expected string
-	expected = `IP:"127.0.0.1" Port:"81" PubKey:"x" Role:1 PeerID:"peer"`
+	expected = `IP:"127.0.0.1" Port:"81" PeerID:"peer"`
 	fmt.Println(info.String())
 	//if strings.Compare(info.String(), expected) != 0 {
 	if strings.EqualFold(info.String(), expected) {
