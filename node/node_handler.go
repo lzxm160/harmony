@@ -392,7 +392,7 @@ func (node *Node) pingMessageHandler(msgPayload []byte, sender string) int {
 	peer := new(p2p.Peer)
 	peer.IP = ping.Node.IP
 	peer.Port = ping.Node.Port
-	peer.PeerID = ping.Node.PeerID
+	peer.PeerID = string(ping.Node.PeerID)
 	peer.ConsensusPubKey = nil
 
 	if ping.Node.PubKey != nil {
@@ -409,7 +409,7 @@ func (node *Node) pingMessageHandler(msgPayload []byte, sender string) int {
 	//node.host.AddIncomingPeer(*peer)
 	node.host.ConnectHostPeer(*peer)
 
-	if ping.Node.Role == proto_node.ClientRole {
+	if ping.Node.Role == uint32(proto_node.ClientRole) {
 		utils.GetLogInstance().Info("Add Client Peer to Node", "Address", node.Consensus.GetSelfAddress(), "Client", peer)
 		node.ClientPeer = peer
 	} else {
@@ -529,7 +529,7 @@ func (node *Node) pongMessageHandler(msgPayload []byte) int {
 		peer := new(p2p.Peer)
 		peer.IP = p.IP
 		peer.Port = p.Port
-		peer.PeerID = p.PeerID
+		peer.PeerID = string(p.PeerID)
 
 		peer.ConsensusPubKey = &bls.PublicKey{}
 		err = peer.ConsensusPubKey.Deserialize(p.PubKey[:])
