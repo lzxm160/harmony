@@ -50,10 +50,10 @@ func NewPongMessage(peers []p2p.Peer, pubKeys []*bls.PublicKey, leaderKey *bls.P
 
 	var err error
 	for _, p := range peers {
-		n := node.Info{}
+		n := &node.Info{}
 		n.IP = p.IP
 		n.Port = p.Port
-		n.PeerID = p.PeerID
+		n.PeerID = string(p.PeerID)
 		n.PubKey = p.ConsensusPubKey.Serialize()
 		if err != nil {
 			fmt.Printf("Error Marshal PubKey: %v", err)
