@@ -27,7 +27,7 @@ func NewPingMessage(peer p2p.Peer, isClient bool) *node.PingMessageType {
 	ping.Version = proto.ProtocolVersion
 	ping.Node.IP = peer.IP
 	ping.Node.Port = peer.Port
-	ping.Node.PeerID = string(peer.PeerID)
+	ping.Node.PeerID = peer.PeerID.String()
 	if !isClient {
 		ping.Node.PubKey = peer.ConsensusPubKey.Serialize()
 		ping.Node.Role = uint32(node.ValidatorRole)
@@ -53,7 +53,7 @@ func NewPongMessage(peers []p2p.Peer, pubKeys []*bls.PublicKey, leaderKey *bls.P
 		n := &node.Info{}
 		n.IP = p.IP
 		n.Port = p.Port
-		n.PeerID = string(p.PeerID)
+		n.PeerID = p.PeerID.String()
 		n.PubKey = p.ConsensusPubKey.Serialize()
 		if err != nil {
 			fmt.Printf("Error Marshal PubKey: %v", err)
